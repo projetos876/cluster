@@ -40,9 +40,36 @@
         .live-toast-content p { margin: 0; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
         
-        /* Indicador de Clique (Seta Animada) */
+        /* Indicador de Clique (Seta Animada Corrigida) */
         @keyframes bounceDown { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -5px); } }
-        .click-hint { position: absolute; top: -32px; left: 50%; transform: translateX(-50%); color: var(--loreal-red); font-size: 12px; font-weight: bold; animation: bounceDown 1.5s infinite; white-space: nowrap; pointer-events: none; background: #fff1f2; padding: 2px 10px; border-radius: 12px; border: 1px solid #fecdd3; }
+        .click-hint { 
+            position: absolute; 
+            top: -38px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            color: var(--loreal-red); 
+            font-size: 12px; 
+            font-weight: bold; 
+            animation: bounceDown 1.5s infinite; 
+            white-space: nowrap; 
+            pointer-events: none; 
+            background: #fff1f2; 
+            padding: 4px 12px; 
+            border-radius: 20px; 
+            border: 1px solid #fecdd3; 
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 50;
+        }
+        .click-hint::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px 5px 0;
+            border-style: solid;
+            border-color: #fecdd3 transparent transparent transparent;
+        }
         
         /* Sidebar Navigation */
         .sidebar { width: var(--sidebar-width); background: var(--accent-black); color: white; height: 100vh; position: fixed; display: flex; flex-direction: column; padding: 30px 20px; z-index: 100; box-shadow: 4px 0 15px rgba(0,0,0,0.1); }
@@ -67,20 +94,31 @@
         /* Grids & Cards */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
+        .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; }
         
         .card { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05), 0 2px 4px -1px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; position: relative; overflow: hidden; transition: transform 0.3s; }
         .card:hover { transform: translateY(-5px); }
         .card h3 { font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--accent-black); }
         .card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
         
-        /* Infográfico do Cluster */
-        .cluster-flow { display: flex; align-items: center; justify-content: space-between; background: white; padding: 30px; border-radius: 12px; border: 1px dashed #cbd5e1; margin-bottom: 40px; }
-        .c-box { flex: 1; text-align: center; padding: 20px; }
-        .c-box h4 { font-size: 14px; text-transform: uppercase; margin-bottom: 10px; color: var(--accent-black); }
-        .c-box p { font-size: 12px; color: var(--text-muted); }
-        .c-arrow { color: #cbd5e1; font-size: 24px; }
-        .c-danger { border: 2px solid var(--danger); border-radius: 8px; background: #fef2f2; position: relative; }
-        .c-danger::after { content: '🚨 MAIOR VOLUME DE ERROS'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--danger); color: white; font-size: 10px; padding: 4px 8px; border-radius: 12px; font-weight: bold; width: 140px; }
+        /* Diagrama/Fluxograma de GTM */
+        .flow-diagram { display: flex; align-items: center; justify-content: space-between; background: white; padding: 35px 20px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); margin-bottom: 30px; position: relative; }
+        .flow-step { flex: 1; text-align: center; position: relative; padding: 0 10px; }
+        .flow-icon { width: 70px; height: 70px; background: #f8fafc; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 15px auto; border: 2px solid #cbd5e1; font-size: 24px; color: var(--accent-black); transition: 0.3s; z-index: 2; position: relative; }
+        .flow-step h4 { font-size: 14px; margin-bottom: 5px; color: var(--accent-black); text-transform: uppercase; }
+        .flow-step p { font-size: 12px; color: var(--text-muted); line-height: 1.3; }
+        .flow-arrow { color: #cbd5e1; font-size: 20px; }
+        
+        /* Destaque do Ofensor no Diagrama */
+        .step-highlight .flow-icon { border-color: var(--danger); background: #fef2f2; color: var(--danger); box-shadow: 0 0 0 4px rgba(239,68,68,0.2); }
+        .step-highlight h4 { color: var(--danger); }
+        .step-target .flow-icon { background: var(--accent-black); border-color: var(--accent-black); color: var(--gold); }
+        
+        /* Caixas de Explicação do Cluster */
+        .cluster-def { display: flex; gap: 15px; margin-top: 20px; }
+        .def-box { flex: 1; background: #f1f5f9; padding: 15px; border-radius: 8px; border-left: 3px solid var(--text-muted); font-size: 12px; color: var(--text-dark); }
+        .def-box.danger { border-left-color: var(--danger); background: #fef2f2; }
+        .def-box h5 { font-size: 13px; margin-bottom: 5px; text-transform: uppercase; }
         
         /* Timeline (Meu Papel) */
         .timeline { display: flex; flex-direction: column; gap: 20px; position: relative; margin-top: 20px; }
@@ -91,9 +129,10 @@
         .timeline-content h4 { font-size: 16px; margin-bottom: 8px; color: var(--accent-black); }
         .timeline-content p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
         
-        /* UI Mockup Expandido */
-        .ui-mockup { border: 1px solid #cbd5e1; border-radius: 12px; overflow: hidden; background: white; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
-        .ui-header { background: var(--accent-black); color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
+        /* UI Mockup Expandido (Solução) */
+        /* Removido o overflow: hidden do mockup principal para a setinha poder "vazar" para cima */
+        .ui-mockup { border: 1px solid #cbd5e1; border-radius: 12px; background: white; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); display: flex; flex-direction: column; position: relative; }
+        .ui-header { background: var(--accent-black); color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-radius: 11px 11px 0 0; }
         
         .ui-kpi-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; padding: 20px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; }
         .u-kpi { background: white; padding: 15px; border-radius: 8px; border: 1px solid #e2e8f0; }
@@ -102,9 +141,9 @@
         .u-kpi .sub { font-size: 11px; font-weight: bold; margin-top: 5px; }
         
         /* Botões */
-        .btn-action { background: white; border: 1px solid #cbd5e1; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text-dark); transition: 0.2s; }
+        .btn-action { background: white; border: 1px solid #cbd5e1; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text-dark); transition: 0.2s; position: relative; }
         .btn-action:hover { background: #f1f5f9; }
-        .btn-highlight { border: 1px solid var(--loreal-red); color: var(--loreal-red); background: #fef2f2; }
+        .btn-highlight { border: 1px solid var(--loreal-red); color: var(--loreal-red); background: #fff1f2; }
         .btn-highlight:hover { background: #fee2e2; }
         .btn-primary { background: var(--accent-black); color: white; border: none; }
         .btn-primary:hover { background: #334155; }
@@ -120,9 +159,23 @@
         .b-med { background: #fef08a; color: #854d0e; }
         
         /* Modal Invisível (Simulação) */
-        .sim-modal { display: none; position: absolute; top: 150px; left: 50%; transform: translateX(-50%); width: 400px; background: white; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); border: 1px solid #cbd5e1; z-index: 50; padding: 20px; }
+        .sim-modal { display: none; position: absolute; top: 100px; left: 50%; transform: translateX(-50%); width: 450px; background: white; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); border: 1px solid #cbd5e1; z-index: 50; padding: 20px; }
         .sim-modal.active { display: block; animation: fadeUp 0.3s ease-out; }
         @keyframes fadeUp { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+        /* Estilos do Super Hero de Resultados (Impacto de Negócios) */
+        .impact-hero { background: linear-gradient(135deg, var(--accent-black) 0%, #1e293b 100%); border-radius: 16px; padding: 40px; color: white; margin-bottom: 40px; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); position: relative; overflow: hidden; }
+        .impact-hero::after { content: '\f135'; font-family: "Font Awesome 6 Free"; font-weight: 900; position: absolute; right: -20px; top: -30px; font-size: 250px; opacity: 0.05; color: white; }
+        .impact-hero-title { font-size: 24px; font-weight: bold; margin-bottom: 30px; display: flex; align-items: center; gap: 15px; color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+        .impact-grid-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; position: relative; z-index: 2; }
+        .impact-card-hero { background: rgba(255,255,255,0.05); padding: 25px; border-radius: 12px; border-left: 4px solid var(--gold); }
+        .impact-card-hero i { font-size: 32px; color: var(--gold); margin-bottom: 15px; }
+        .impact-card-hero h4 { font-size: 18px; margin-bottom: 10px; color: white; }
+        .impact-card-hero p { font-size: 14px; color: #cbd5e1; line-height: 1.6; }
+        .impact-highlight-text { background: rgba(250,204,21,0.15); padding: 4px 8px; border-radius: 4px; color: var(--gold); font-weight: bold; }
+
+        /* Secondary Results */
+        .secondary-results-title { font-size: 16px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; font-weight: bold; }
         
         /* Animation Classes */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
@@ -166,22 +219,49 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>O que está em jogo?</h1>
-                <p>Antes de entender o problema, é preciso entender a métrica. Nossa malha de distribuição opera por meio de distribuidores e atacados que conectam a L'Oréal ao varejo. Para garantir que nossos produtos cheguem às prateleiras certas, recebemos duas informações vitais sobre cada loja compradora: o <strong>ambiente do varejo</strong> (Cluster 3 - ex: farmácias, alimentar) e o <strong>tamanho dessa loja</strong> com base no check-out (Cluster 2). É essa matriz de classificação (Cluster) que dita toda a nossa estratégia de negócios, esforços operacionais e investimentos de <strong>Go To Market</strong>.</p>
+                <p>Nossa malha de distribuição conecta a L'Oréal ao varejo final. Para garantir que nossos produtos cheguem às prateleiras de forma inteligente, recebemos informações vitais de cada loja compradora que são mapeadas em <strong>Clusters</strong>. É com base nessas classificações que direcionamos todos os nossos investimentos, esforços e estratégias de Go To Market.</p>
             </div>
-            <div class="cluster-flow fade-in">
-                <div class="c-box">
-                    <h4><i class="fa-solid fa-1"></i> Cluster 1</h4>
-                    <p>Classificação primária e inicial enviada pelo cliente via sistema integrador.</p>
+
+            <!-- Fluxograma Visual -->
+            <div class="flow-diagram fade-in">
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fa-solid fa-industry"></i></div>
+                    <h4>L'Oréal</h4>
+                    <p>Origem do Produto</p>
                 </div>
-                <i class="fa-solid fa-arrow-right c-arrow"></i>
-                <div class="c-box c-danger">
-                    <h4><i class="fa-solid fa-2"></i> Cluster 2</h4>
-                    <p>Classifica o <strong>tamanho</strong> do varejo. É o nosso ofensor mais crítico atual, concentrando o maior volume de inconsistências.</p>
+                <i class="fa-solid fa-chevron-right flow-arrow"></i>
+                <div class="flow-step">
+                    <div class="flow-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h4>Distribuição</h4>
+                    <p>Atacados e Distribuidores</p>
                 </div>
-                <i class="fa-solid fa-arrow-right c-arrow"></i>
-                <div class="c-box">
-                    <h4><i class="fa-solid fa-3"></i> Cluster 3</h4>
-                    <p>Ambiente de atuação da loja. Erros aqui, assim como no Cluster 2, distorcem completamente o aporte de verbas.</p>
+                <i class="fa-solid fa-chevron-right flow-arrow"></i>
+                <div class="flow-step step-highlight">
+                    <div class="flow-icon"><i class="fa-solid fa-store"></i></div>
+                    <h4>Varejo (Clusters)</h4>
+                    <p>Mapeamento da Loja</p>
+                </div>
+                <i class="fa-solid fa-chevron-right flow-arrow"></i>
+                <div class="flow-step step-target">
+                    <div class="flow-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <h4>Estratégia (GTM)</h4>
+                    <p>Verbas e Investimento</p>
+                </div>
+            </div>
+
+            <!-- Caixas de Detalhamento do Cluster -->
+            <div class="cluster-def fade-in">
+                <div class="def-box">
+                    <h5>Cluster 1</h5>
+                    <p>A classificação inicial da loja, enviada de forma bruta pelo cliente via sistema integrador.</p>
+                </div>
+                <div class="def-box danger">
+                    <h5 style="color: var(--danger);"><i class="fa-solid fa-triangle-exclamation"></i> Cluster 2</h5>
+                    <p>Classifica o <strong>Tamanho</strong> do varejo com base no check-out. É o nosso ofensor crítico atual, concentrando o maior volume de erros sistêmicos.</p>
+                </div>
+                <div class="def-box">
+                    <h5>Cluster 3</h5>
+                    <p>Ambiente do varejo (Farmácia, Alimentar, Perfumaria). Erros aqui também distorcem completamente a assertividade do investimento L'Oréal.</p>
                 </div>
             </div>
         </section>
@@ -214,7 +294,7 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>2. Meu Papel</h1>
-                <p>Assumi o desafio de resgatar um código legado e transformá-lo em um produto escalável de inteligência estratégica. Para assegurar a adesão e o sucesso da ferramenta, <strong>atuei de forma transversal, colaborando diretamente com 6 áreas diferentes</strong> da companhia para mapear e atender às reais necessidades de todas as frentes impactadas.</p>
+                <p>Assumi o desafio de resgatar um código legado e transformá-lo em um produto escalável de inteligência estratégica. Para assegurar a aderência da ferramenta, <strong>cooperei de forma transversal com 6 áreas diferentes</strong> da companhia, garantindo que as reais necessidades de todos os impactados fossem atendidas de ponta a ponta.</p>
             </div>
             <div class="timeline fade-in">
                 <div class="timeline-item">
@@ -235,7 +315,7 @@
                     <div class="timeline-icon"><i class="fa-solid fa-comments"></i></div>
                     <div class="timeline-content">
                         <h4>3. Alinhamento Multidisciplinar</h4>
-                        <p>Traduzi os achados técnicos em impacto de negócio. Apresentei o cenário para as 6 áreas envolvidas, engajando Executivos de Contas, Gerências e até conduzindo reuniões de acareação sistêmica direto com os clientes ofensores.</p>
+                        <p>Traduzi os achados técnicos em impacto de negócio. Apresentei o cenário para as áreas envolvidas, engajando Executivos de Contas, Gerências e até conduzindo reuniões de acareação sistêmica direto com os clientes ofensores.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -253,17 +333,18 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>3. A Solução: Visão do Produto na Prática</h1>
-                <!-- O max-width foi reduzido para 600px para garantir que a notificação não cubra o texto -->
+                <!-- O max-width foi reduzido para garantir que a notificação não cubra o texto em monitores menores -->
                 <p style="max-width: 600px;">Mais do que um dashboard estático, a interface atua como um radar ativo. Ela isola o ruído, expõe o peso financeiro (WOB) comprometido e viabiliza uma ação cirúrgica e imediata junto aos ofensores da base.</p>
             </div>
-            <div class="ui-mockup fade-in" style="position: relative;">
+            
+            <div class="ui-mockup fade-in">
                 <div class="ui-header">
                     <span><i class="fa-solid fa-shield-halved" style="margin-right: 8px;"></i> Painel de Governança de Clusters</span>
                     <div style="display: flex; gap: 10px;">
                         
                         <!-- Botão com indicador animado -->
                         <div style="position: relative;">
-                            <div class="click-hint"><i class="fa-solid fa-arrow-down"></i> Simule um clique</div>
+                            <div class="click-hint"><i class="fa-solid fa-arrow-down" style="margin-right: 4px;"></i> Clique e Simule</div>
                             <button class="btn-action btn-highlight" onclick="toggleModal()"><i class="fa-solid fa-layer-group"></i> Tipos de Erro Mapeados</button>
                         </div>
 
@@ -276,7 +357,7 @@
                     <div class="u-kpi"><h5>Volume de CNPJs Lidos</h5><span class="val">24.590</span><div class="sub" style="color: var(--text-muted);">Base Nacional Ativa</div></div>
                     <div class="u-kpi" style="border-left: 3px solid var(--danger);"><h5>CNPJs com Erro Sistêmico</h5><span class="val" style="color: var(--danger);">317</span><div class="sub" style="color: var(--danger);">Oscilações detectadas (D-1)</div></div>
                     <div class="u-kpi" style="background: var(--accent-black); color: white;">
-                        <h5 style="color: #94a3b8;">WOB em Risco (Sell-Out)</h5><span class="val" style="color: white;">14.2%</span><div class="sub" style="color: var(--gold);"><i class="fa-solid fa-triangle-exclamation"></i> Alto Impacto Financeiro</div>
+                        <h5 style="color: #94a3b8;">WOB em Risco (Sell-Out)</h5><span class="val" style="color: white;">14.2%</span><div class="sub" style="color: var(--gold);"><i class="fa-solid fa-triangle-exclamation"></i> Alto Impacto no Negócio</div>
                     </div>
                 </div>
                 <div class="ui-table-section">
@@ -317,14 +398,14 @@
                 <!-- Simulação de Modal (Tipos de Erro) -->
                 <div class="sim-modal" id="errorModal">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                        <h3 style="font-size: 14px; color: var(--accent-black);">Dicionário de Diagnósticos</h3>
-                        <i class="fa-solid fa-xmark" style="cursor: pointer; color: var(--text-muted);" onclick="toggleModal()"></i>
+                        <h3 style="font-size: 14px; color: var(--accent-black);">Dicionário de Diagnósticos Analíticos</h3>
+                        <i class="fa-solid fa-xmark" style="cursor: pointer; color: var(--text-muted); font-size: 16px;" onclick="toggleModal()"></i>
                     </div>
-                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Status Alterado:</strong> Divergência aguda na estrutura da Organização de Vendas (Ex: Cliente A).</li>
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Distribuidor Removido:</strong> Falha de looping no C1/C3 forçando o status para "Unknown" (Ex: Cliente B).</li>
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Nova Combinação:</strong> Conflito gerando duplicidade pelo cadastro via integrador.</li>
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Desvio Isolado:</strong> Alterações atípicas e reversões imprevistas para 0000 (Ex: Cliente C).</li>
+                    <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 12px; margin-bottom: 0;">
+                        <li style="padding: 12px; background: #f8fafc; border-radius: 6px; border-left: 3px solid var(--accent-black);"><strong>Status Alterado:</strong> Divergência aguda na estrutura da Organização de Vendas (Ex: Cliente A).</li>
+                        <li style="padding: 12px; background: #f8fafc; border-radius: 6px; border-left: 3px solid var(--accent-black);"><strong>Distribuidor Removido:</strong> Falha de looping no C1/C3 forçando o status para "Unknown" (Ex: Cliente B).</li>
+                        <li style="padding: 12px; background: #f8fafc; border-radius: 6px; border-left: 3px solid var(--accent-black);"><strong>Nova Combinação:</strong> Conflito gerando duplicidade pelo cadastro via integrador.</li>
+                        <li style="padding: 12px; background: #f8fafc; border-radius: 6px; border-left: 3px solid var(--accent-black);"><strong>Desvio Isolado:</strong> Alterações atípicas e reversões imprevistas para 0000 (Ex: Cliente C).</li>
                     </ul>
                 </div>
             </div>
@@ -334,39 +415,44 @@
         <section id="resultados">
             <div class="section-header fade-in">
                 <div class="title-line"></div>
-                <h1>4. Impactos que Já Estão Acontecendo</h1>
+                <h1>4. Resultados e Impactos</h1>
                 <p>Nesta iniciativa, o saneamento dos dados não é a linha de chegada, é apenas o alicerce. Ao restabelecermos a verdade na nossa base, destravamos alavancas reais de conversão e maximização do Retorno sobre Investimento (ROI) de Trade.</p>
             </div>
             
-            <div class="grid-3 fade-in" style="margin-bottom: 30px;">
-                <div class="card" style="border-top: 4px solid var(--success);">
-                    <h3><i class="fa-solid fa-shield-check" style="color: var(--success);"></i> Integridade da Base</h3>
-                    <p>Recuperamos o controle analítico e a rastreabilidade da operação. Dezenas de CNPJs críticos já foram retificados e estão sistemicamente blindados nas fontes geradoras.</p>
+            <!-- IMPACTOS DE NEGÓCIO (O Grande Destaque visual) -->
+            <div class="impact-hero fade-in">
+                <div class="impact-hero-title"><i class="fa-solid fa-rocket" style="color: var(--gold);"></i> Aceleração Direta no Go To Market</div>
+                <div class="impact-grid-hero">
+                    <div class="impact-card-hero">
+                        <i class="fa-solid fa-chess-knight"></i>
+                        <h4>Reestruturação & Defesa de PSKUs</h4>
+                        <p>Com a visibilidade correta das classificações dos clusters, já estamos executando o remapeamento preciso das nossas <strong>Top Contas</strong>. Isso nos permite adequar a oferta estratégica de produtos (PSKUs) que são verdadeiramente ideais para o perfil real de cada loja.</p>
+                    </div>
+                    <div class="impact-card-hero">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                        <h4>Alocação Assertiva e Market Share</h4>
+                        <p>Garantir o tamanho real do cliente significa destravar a alocação de recursos e verbas de Trade onde elas geram mais retorno financeiro. Essa assertividade na ponta acelera o giro, qualifica o mix e traciona o Sell-Out, garantindo a meta central: <span class="impact-highlight-text">Crescer acima do mercado.</span></p>
+                    </div>
                 </div>
-                <div class="card" style="border-top: 4px solid var(--success);">
-                    <h3><i class="fa-solid fa-stopwatch" style="color: var(--success);"></i> Eficiência Comercial</h3>
-                    <p>A automação do fluxo de monitoramento e alertas internos mitigou dezenas de horas de trabalho braçal. O time comercial deixou de garimpar erros para focar na execução da estratégia.</p>
+            </div>
+
+            <!-- RESULTADOS OPERACIONAIS (Secundários, base do sucesso) -->
+            <div class="secondary-results-title fade-in">Conquistas Operacionais e Sistêmicas</div>
+            <div class="grid-3 fade-in">
+                <div class="card" style="border-top: 4px solid var(--success); padding: 25px;">
+                    <h3 style="font-size: 15px;"><i class="fa-solid fa-shield-check" style="color: var(--success);"></i> Integridade da Base</h3>
+                    <p style="font-size: 13px;">Recuperamos o controle analítico e a rastreabilidade da operação. Milhares de CNPJs críticos já foram retificados.</p>
                 </div>
-                <div class="card" style="border-top: 4px solid var(--warning);">
-                    <h3><i class="fa-solid fa-crosshairs" style="color: var(--warning);"></i> Cerco aos Ofensores</h3>
-                    <p>Graças à governança implementada, estamos isolando e tratando assertivamente as irregularidades dos últimos 2 clientes ofensores remanescentes na base Brasil.</p>
+                <div class="card" style="border-top: 4px solid var(--success); padding: 25px;">
+                    <h3 style="font-size: 15px;"><i class="fa-solid fa-stopwatch" style="color: var(--success);"></i> Eficiência Comercial</h3>
+                    <p style="font-size: 13px;">A automação do monitoramento mitigou horas de trabalho manual. O time deixou de garimpar erros para focar na execução da estratégia.</p>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--warning); padding: 25px;">
+                    <h3 style="font-size: 15px;"><i class="fa-solid fa-crosshairs" style="color: var(--warning);"></i> Cerco aos Ofensores</h3>
+                    <p style="font-size: 13px;">Graças à governança implementada, estamos isolando e tratando assertivamente as irregularidades dos últimos 2 clientes ofensores remanescentes.</p>
                 </div>
             </div>
             
-            <!-- NOVA SESSÃO: IMPACTOS DIRETOS EM GTM -->
-            <div class="card fade-in" style="background: var(--accent-black); color: white; border: none;">
-                <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;"><i class="fa-solid fa-rocket"></i> Aceleração Direta no Go To Market</h3>
-                <div style="display: flex; gap: 40px; margin-top: 20px;">
-                    <div style="flex: 1;">
-                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Reestruturação & Defesa de PSKUs</h4>
-                        <p style="color: #94a3b8; font-size: 13px;">Com a visibilidade correta das classificações, já estamos executando o remapeamento preciso das nossas <strong>Top Contas</strong> e adequando a oferta estratégica de produtos (PSKUs) ideais para o perfil real de cada loja.</p>
-                    </div>
-                    <div style="flex: 1;">
-                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Alocação Assertiva e Market Share</h4>
-                        <p style="color: #94a3b8; font-size: 13px;">Garantir o tamanho real do cliente (Cluster 2) significa destravar a alocação de recursos e verbas de Trade onde elas geram mais retorno. Essa assertividade acelera o giro, qualifica o mix e traciona o Sell-Out, garantindo o nosso objetivo final: <strong>crescer acima do mercado.</strong></p>
-                    </div>
-                </div>
-            </div>
         </section>
     </main>
 
