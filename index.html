@@ -16,7 +16,9 @@
             --success: #10b981;
             --warning: #f59e0b;
             --gold: #facc15;
-            --loreal-red: #dc2626;
+            --brand-red: #dc2626; /* Nome da variável alterado para não conter nome da empresa */
+            --cluster-blue: #2563eb;
+            --cluster-bg: #eff6ff;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; }
         body { background-color: var(--bg-main); color: var(--text-dark); display: flex; scroll-behavior: smooth; overflow-x: hidden; }
@@ -43,32 +45,15 @@
         /* Indicador de Clique (Seta Animada Corrigida) */
         @keyframes bounceDown { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -5px); } }
         .click-hint { 
-            position: absolute; 
-            top: -38px; 
-            left: 50%; 
-            transform: translateX(-50%); 
-            color: var(--loreal-red); 
-            font-size: 12px; 
-            font-weight: bold; 
-            animation: bounceDown 1.5s infinite; 
-            white-space: nowrap; 
-            pointer-events: none; 
-            background: #fff1f2; 
-            padding: 4px 12px; 
-            border-radius: 20px; 
-            border: 1px solid #fecdd3; 
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            z-index: 50;
+            position: absolute; top: -38px; left: 50%; transform: translateX(-50%); 
+            color: var(--brand-red); font-size: 12px; font-weight: bold; 
+            animation: bounceDown 1.5s infinite; white-space: nowrap; pointer-events: none; 
+            background: #fff1f2; padding: 4px 12px; border-radius: 20px; 
+            border: 1px solid #fecdd3; box-shadow: 0 4px 6px rgba(0,0,0,0.1); z-index: 50;
         }
         .click-hint::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-width: 5px 5px 0;
-            border-style: solid;
-            border-color: #fecdd3 transparent transparent transparent;
+            content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
+            border-width: 5px 5px 0; border-style: solid; border-color: #fecdd3 transparent transparent transparent;
         }
         
         /* Sidebar Navigation */
@@ -89,7 +74,7 @@
         .section-header { margin-bottom: 40px; }
         .section-header h1 { font-size: 36px; color: var(--accent-black); margin-bottom: 15px; letter-spacing: -0.5px; }
         .section-header p { font-size: 16px; color: var(--text-muted); line-height: 1.6; max-width: 900px; }
-        .title-line { height: 4px; width: 60px; background: var(--loreal-red); margin-bottom: 20px; border-radius: 2px; }
+        .title-line { height: 4px; width: 60px; background: var(--brand-red); margin-bottom: 20px; border-radius: 2px; }
         
         /* Grids & Cards */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
@@ -101,24 +86,41 @@
         .card h3 { font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--accent-black); }
         .card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
         
-        /* Diagrama/Fluxograma de GTM */
-        .flow-diagram { display: flex; align-items: center; justify-content: space-between; background: white; padding: 35px 20px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); margin-bottom: 30px; position: relative; }
+        /* Diagrama/Fluxograma de GTM Atualizado */
+        .flow-diagram { display: flex; align-items: center; justify-content: space-between; background: white; padding: 35px 20px; border-radius: 12px; border: 1px solid #e2e8f0; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); margin-bottom: 25px; position: relative; }
         .flow-step { flex: 1; text-align: center; position: relative; padding: 0 10px; }
         .flow-icon { width: 70px; height: 70px; background: #f8fafc; border-radius: 50%; display: flex; justify-content: center; align-items: center; margin: 0 auto 15px auto; border: 2px solid #cbd5e1; font-size: 24px; color: var(--accent-black); transition: 0.3s; z-index: 2; position: relative; }
         .flow-step h4 { font-size: 14px; margin-bottom: 5px; color: var(--accent-black); text-transform: uppercase; }
         .flow-step p { font-size: 12px; color: var(--text-muted); line-height: 1.3; }
         .flow-arrow { color: #cbd5e1; font-size: 20px; }
         
-        /* Destaque do Ofensor no Diagrama */
-        .step-highlight .flow-icon { border-color: var(--danger); background: #fef2f2; color: var(--danger); box-shadow: 0 0 0 4px rgba(239,68,68,0.2); }
-        .step-highlight h4 { color: var(--danger); }
-        .step-target .flow-icon { background: var(--accent-black); border-color: var(--accent-black); color: var(--gold); }
+        /* Conexão Visual Azul do Varejo para os Clusters */
+        .step-varejo .flow-icon { border-color: var(--cluster-blue); background: var(--cluster-bg); color: var(--cluster-blue); box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1); }
+        .step-varejo h4 { color: var(--cluster-blue); }
         
-        /* Caixas de Explicação do Cluster */
-        .cluster-def { display: flex; gap: 15px; margin-top: 20px; }
-        .def-box { flex: 1; background: #f1f5f9; padding: 15px; border-radius: 8px; border-left: 3px solid var(--text-muted); font-size: 12px; color: var(--text-dark); }
-        .def-box.danger { border-left-color: var(--danger); background: #fef2f2; }
-        .def-box h5 { font-size: 13px; margin-bottom: 5px; text-transform: uppercase; }
+        .cluster-highlight { 
+            color: var(--cluster-blue); font-weight: 800; background: var(--cluster-bg); 
+            padding: 2px 6px; border-radius: 4px; display: inline-flex; align-items: center; 
+            gap: 5px; border: 1px solid #bfdbfe; 
+        }
+        
+        /* Caixas de Explicação do Cluster (Tema Azul) */
+        .cluster-blue-box { 
+            background: var(--cluster-bg); border: 1px dashed #93c5fd; border-radius: 12px; 
+            padding: 25px; display: flex; gap: 15px; position: relative; 
+        }
+        .cluster-blue-box::before {
+            content: ''; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+            border-width: 0 15px 15px 15px; border-style: solid; border-color: transparent transparent var(--cluster-bg) transparent;
+        }
+        .cluster-blue-box::after {
+            content: ''; position: absolute; top: -15px; left: 50%; transform: translateX(-50%);
+            border-width: 0 16px 16px 16px; border-style: solid; border-color: transparent transparent #93c5fd transparent; z-index: -1;
+        }
+        .def-box { flex: 1; padding: 15px; font-size: 12px; color: var(--text-dark); }
+        .def-box.blue-theme { background: white; border-left: 4px solid var(--cluster-blue); border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
+        .def-box.blue-theme h5 { color: var(--cluster-blue); font-size: 14px; font-weight: bold; margin-bottom: 8px; }
+        .def-box.blue-theme strong { color: var(--accent-black); }
         
         /* Timeline (Meu Papel) */
         .timeline { display: flex; flex-direction: column; gap: 20px; position: relative; margin-top: 20px; }
@@ -130,7 +132,6 @@
         .timeline-content p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
         
         /* UI Mockup Expandido (Solução) */
-        /* Removido o overflow: hidden do mockup principal para a setinha poder "vazar" para cima */
         .ui-mockup { border: 1px solid #cbd5e1; border-radius: 12px; background: white; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); display: flex; flex-direction: column; position: relative; }
         .ui-header { background: var(--accent-black); color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; border-radius: 11px 11px 0 0; }
         
@@ -143,7 +144,7 @@
         /* Botões */
         .btn-action { background: white; border: 1px solid #cbd5e1; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text-dark); transition: 0.2s; position: relative; }
         .btn-action:hover { background: #f1f5f9; }
-        .btn-highlight { border: 1px solid var(--loreal-red); color: var(--loreal-red); background: #fff1f2; }
+        .btn-highlight { border: 1px solid var(--brand-red); color: var(--brand-red); background: #fff1f2; }
         .btn-highlight:hover { background: #fee2e2; }
         .btn-primary { background: var(--accent-black); color: white; border: none; }
         .btn-primary:hover { background: #334155; }
@@ -219,49 +220,45 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>O que está em jogo?</h1>
-                <p>Nossa malha de distribuição conecta a empresa ao varejo final. Para garantir que nossos produtos cheguem às prateleiras de forma inteligente, recebemos informações vitais de cada loja compradora que são mapeadas em <strong>Clusters</strong>. É com base nessas classificações que direcionamos todos os nossos investimentos, esforços e estratégias de Go To Market.</p>
+                <p>Nossa malha de distribuição conta com parceiros e atacados que compram os produtos da companhia e vendem para o varejo. Para garantir que cheguem às prateleiras certas, recebemos a informação das lojas que estão comprando: qual é o ambiente de varejo e o tamanho dele. É com base nessas classificações que direcionamos todos os nossos esforços, investimentos e estratégias de <strong>Go To Market</strong>.</p>
             </div>
 
             <!-- Fluxograma Visual -->
             <div class="flow-diagram fade-in">
                 <div class="flow-step">
-                    <div class="flow-icon"><i class="fa-solid fa-industry"></i></div>
-                    <h4>Empresa</h4>
-                    <p>Origem do Produto</p>
+                    <div class="flow-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h4>Malha de Distribuição</h4>
+                    <p>Distribuidores e Atacados vendem para o varejo.</p>
                 </div>
+                <i class="fa-solid fa-chevron-right flow-arrow"></i>
+                
+                <div class="flow-step step-varejo">
+                    <div class="flow-icon"><i class="fa-solid fa-store"></i></div>
+                    <h4>Varejo</h4>
+                    <p>Recebemos a informação da <span class="cluster-highlight">classificação (cluster) <i class="fa-solid fa-arrow-down"></i></span> de cada loja.</p>
+                </div>
+                
                 <i class="fa-solid fa-chevron-right flow-arrow"></i>
                 <div class="flow-step">
-                    <div class="flow-icon"><i class="fa-solid fa-truck-fast"></i></div>
-                    <h4>Distribuição</h4>
-                    <p>Atacados e Distribuidores</p>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-arrow"></i>
-                <div class="flow-step step-highlight">
-                    <div class="flow-icon"><i class="fa-solid fa-store"></i></div>
-                    <h4>Varejo (Clusters)</h4>
-                    <p>Mapeamento da Loja</p>
-                </div>
-                <i class="fa-solid fa-chevron-right flow-arrow"></i>
-                <div class="flow-step step-target">
                     <div class="flow-icon"><i class="fa-solid fa-bullseye"></i></div>
-                    <h4>Estratégia (GTM)</h4>
-                    <p>Verbas e Investimento</p>
+                    <h4>GTM</h4>
+                    <p>Utiliza o mapeamento para planejar esforços e alocar investimentos.</p>
                 </div>
             </div>
 
-            <!-- Caixas de Detalhamento do Cluster -->
-            <div class="cluster-def fade-in">
-                <div class="def-box">
-                    <h5>Cluster 1</h5>
+            <!-- Caixas de Detalhamento do Cluster (Azul) -->
+            <div class="cluster-def cluster-blue-box fade-in">
+                <div class="def-box blue-theme">
+                    <h5><i class="fa-solid fa-1"></i> Cluster 1</h5>
                     <p>A classificação inicial da loja, enviada de forma bruta pelo cliente via sistema integrador.</p>
                 </div>
-                <div class="def-box danger">
-                    <h5 style="color: var(--danger);"><i class="fa-solid fa-triangle-exclamation"></i> Cluster 2</h5>
-                    <p>Classifica o <strong>Tamanho</strong> do varejo com base no check-out. É o nosso ofensor crítico atual, concentrando o maior volume de erros sistêmicos.</p>
+                <div class="def-box blue-theme">
+                    <h5><i class="fa-solid fa-2"></i> Cluster 2</h5>
+                    <p>Classifica o <strong>tamanho</strong> do varejo com base no check-out. É onde mora o nosso maior volume de erros sistêmicos.</p>
                 </div>
-                <div class="def-box">
-                    <h5>Cluster 3</h5>
-                    <p>Ambiente do varejo (Farmácia, Alimentar, Perfumaria). Erros aqui também distorcem completamente a assertividade do investimento L'Oréal.</p>
+                <div class="def-box blue-theme">
+                    <h5><i class="fa-solid fa-3"></i> Cluster 3</h5>
+                    <p>Classifica o ambiente do varejo (Farmácia, Alimentar, Perfumaria). Erros aqui distorcem completamente a assertividade do investimento.</p>
                 </div>
             </div>
         </section>
@@ -271,20 +268,20 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>1. O Desafio e o Efeito Cascata</h1>
-                <p>Identificamos um alto volume de clientes informando segmentações incorretas — seja por falha de ERP, busca intencional por mais verba ou conflitos sistêmicos de integração. A falta de rastreabilidade desse dado gerava um perigoso efeito cascata, afetando da ponta comercial até a nossa reputação global.</p>
+                <p><strong>Identificamos um alto volume de clientes informando segmentações incorretas</strong> — seja por falha de ERP, busca por mais verba ou conflitos sistêmicos. A falta de rastreabilidade desse dado gera um perigoso efeito cascata, afetando da ponta comercial até a nossa reputação global.</p>
             </div>
             <div class="grid-3 fade-in">
-                <div class="card" style="border-top: 4px solid var(--loreal-red);">
+                <div class="card" style="border-top: 4px solid var(--brand-red);">
                     <h3><i class="fa-solid fa-route"></i> Distribuição e GTM</h3>
                     <p>Nossa malha logística, roteiros de venda e estratégia de mercado dependem ativamente do cluster. Sem essa precisão, não temos garantias de que o nosso <strong>investimento financeiro</strong> está sendo empregado com eficiência na ponta.</p>
                 </div>
                 <div class="card" style="border-top: 4px solid var(--accent-black);">
                     <h3><i class="fa-solid fa-chart-pie"></i> Análise de Indicadores</h3>
-                    <p>Um cluster mascarado inviabiliza o mapeamento estratégico das nossas <strong>Top Contas</strong> e distorce a definição da cesta ideal de <strong>PSKUs</strong>, prejudicando diretamente a precisão das análises de Sell-Out da companhia.</p>
+                    <p>Um cluster mascarado inviabiliza o planejamento estratégico das nossas métricas, como definição das <strong>Top Contas</strong> e da cesta ideal de <strong>PSKUs</strong>, prejudicando diretamente as análises de Sell-Out da companhia.</p>
                 </div>
                 <div class="card" style="border-top: 4px solid var(--gold);">
                     <h3><i class="fa-solid fa-earth-americas"></i> Migração GCP & LATAM</h3>
-                    <p>Com a virada para o GCP, a LATAM passará a monitorar de perto a saúde dos dados operacionais. O Brasil deve se posicionar como <strong>referência</strong> em governança; não podemos ceder credibilidade global por anomalias sistêmicas.</p>
+                    <p>Com a mudança do banco de dados, a LATAM passará a monitorar de perto a saúde dos dados operacionais. O Brasil deve se posicionar como <strong>referência</strong> em governança; não podemos perder credibilidade global por anomalias sistêmicas.</p>
                 </div>
             </div>
         </section>
@@ -294,14 +291,14 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>2. Meu Papel</h1>
-                <p>Assumi o desafio de resgatar um código legado e transformá-lo em um produto escalável de inteligência estratégica. Para assegurar a aderência da ferramenta, <strong>cooperei de forma transversal com 6 áreas diferentes</strong> da companhia, garantindo que as reais necessidades de todos os impactados fossem atendidas de ponta a ponta.</p>
+                <p>Assumi o desafio de resgatar um código legado e transformá-lo em um produto escalável de inteligência estratégica. Para assegurar a aderência da ferramenta, <strong>cooperei de forma transversal com 6 áreas diferentes</strong> da companhia, garantindo que as reais necessidades de todos os impactados fossem atendidas.</p>
             </div>
             <div class="timeline fade-in">
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fa-solid fa-code"></i></div>
                     <div class="timeline-content">
                         <h4>1. Diagnóstico e Triagem</h4>
-                        <p>Analisei o algoritmo original criado há 1 ano. Ao rodá-lo e cruzar os históricos, identifiquei um problema silencioso e alarmante: <strong>uma média de 1.000 alterações de cluster por dia</strong> ocultas na base de dados.</p>
+                        <p>A ausência de visibilidade e rastrebalidade sobre as oscilações de cluster me motivou a resgatar um código inativo de mais de um ano. Ao rodá-lo e cruzar os históricos, iniciei dias de investigação e descobri uma <strong>média de 1.000 alterações de cluster por dia</strong>, mascaradas no banco de dados.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -315,14 +312,14 @@
                     <div class="timeline-icon"><i class="fa-solid fa-comments"></i></div>
                     <div class="timeline-content">
                         <h4>3. Alinhamento Multidisciplinar</h4>
-                        <p>Traduzi os achados técnicos em impacto de negócio. Apresentei o cenário para as áreas envolvidas, engajando Executivos de Contas, Gerências e até conduzindo reuniões de acareação sistêmica direto com os clientes ofensores.</p>
+                        <p>Apresentei o cenário para as áreas envolvidas, engajando Executivos de Contas, Gerências e até conduzindo reuniões de verificação sistêmica direto com os clientes ofensores.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fa-solid fa-rocket"></i></div>
                     <div class="timeline-content">
                         <h4>4. Desenvolvimento do Produto Final</h4>
-                        <p>Aprimorei a inteligência do código adicionando regras de negócio e construí um sistema completo que <strong>fornece análises visuais, identifica o WOB em risco e dispara automações de alertas vitais</strong> para subsidiar o time de campo.</p>
+                        <p>Aprimorei a inteligência do código adicionando regras de negócio e construí um construí um sistema que não apenas plota gráficos, mas <strong>fornece análises visuais, identifica o WOB em risco e dispara automações internas de alertas</strong> para o time de campo agir.</p>
                     </div>
                 </div>
             </div>
@@ -333,7 +330,6 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>3. A Solução: Visão do Produto na Prática</h1>
-                <!-- O max-width foi reduzido para garantir que a notificação não cubra o texto em monitores menores -->
                 <p style="max-width: 600px;">Mais do que um dashboard estático, a interface atua como um radar ativo. Ela isola o ruído, expõe o peso financeiro (WOB) comprometido e viabiliza uma ação cirúrgica e imediata junto aos ofensores da base.</p>
             </div>
             
@@ -344,7 +340,7 @@
                         
                         <!-- Botão com indicador animado -->
                         <div style="position: relative;">
-                            <div class="click-hint"><i class="fa-solid fa-arrow-down" style="margin-right: 4px;"></i> Clique e Simule</div>
+                            <div class="click-hint"><i class="fa-solid fa-arrow-down" style="margin-right: 4px;"></i> Clique Aqui</div>
                             <button class="btn-action btn-highlight" onclick="toggleModal()"><i class="fa-solid fa-layer-group"></i> Tipos de Erro Mapeados</button>
                         </div>
 
@@ -353,8 +349,8 @@
                 </div>
                 
                 <div class="ui-kpi-bar">
-                    <div class="u-kpi"><h5>Saúde da Base (Atual)</h5><span class="val" style="color: var(--success);">96.8%</span><div class="sub" style="color: var(--text-muted);">Alvo absoluto de governança: 100%</div></div>
-                    <div class="u-kpi"><h5>Volume de CNPJs Lidos</h5><span class="val">24.590</span><div class="sub" style="color: var(--text-muted);">Base Nacional Ativa</div></div>
+                    <div class="u-kpi"><h5>Saúde da Base (Atual)</h5><span class="val" style="color: var(--success);">96.8%</span><div class="sub" style="color: var(--text-muted);">Alvo absoluto: 100%</div></div>
+                    <div class="u-kpi"><h5>Volume de CNPJs Analisados</h5><span class="val">24.590</span><div class="sub" style="color: var(--text-muted);">Base Nacional Ativa</div></div>
                     <div class="u-kpi" style="border-left: 3px solid var(--danger);"><h5>CNPJs com Erro Sistêmico</h5><span class="val" style="color: var(--danger);">317</span><div class="sub" style="color: var(--danger);">Oscilações detectadas (D-1)</div></div>
                     <div class="u-kpi" style="background: var(--accent-black); color: white;">
                         <h5 style="color: #94a3b8;">WOB em Risco (Sell-Out)</h5><span class="val" style="color: white;">14.2%</span><div class="sub" style="color: var(--gold);"><i class="fa-solid fa-triangle-exclamation"></i> Alto Impacto no Negócio</div>
@@ -367,7 +363,7 @@
                     </div>
                     <table class="ui-table">
                         <thead>
-                            <tr><th>Cliente (Distribuidor)</th><th>CNPJs Divergentes</th><th>Saúde Local (%)</th><th>WOB Afetado</th><th>Diagnóstico Sistêmico</th><th>Status Operacional</th></tr>
+                            <tr><th>Cliente (Distribuidor)</th><th>CNPJs Divergentes</th><th>Saúde Cliente (%)</th><th>WOB Afetado</th><th>Diagnóstico Sistêmico</th><th>Status Operacional</th></tr>
                         </thead>
                         <tbody>
                             <tr style="background: #fff1f2;">
@@ -416,7 +412,7 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>4. Resultados e Impactos</h1>
-                <p>Nesta iniciativa, o saneamento dos dados não é a linha de chegada, é apenas o alicerce. Ao restabelecermos a verdade na nossa base, destravamos alavancas reais de conversão e maximização do Retorno sobre Investimento (ROI) de Trade.</p>
+                <p>Nesta iniciativa, o saneamento dos dados não é a linha de chegada, é apenas o alicerce. Ao estabelecermos a assertividade da nossa base, destravamos alavancas reais de conversão e maximização do Retorno sobre Investimento (ROI) de Trade.</p>
             </div>
             
             <!-- IMPACTOS DE NEGÓCIO (O Grande Destaque visual) -->
@@ -425,13 +421,13 @@
                 <div class="impact-grid-hero">
                     <div class="impact-card-hero">
                         <i class="fa-solid fa-chess-knight"></i>
-                        <h4>Reestruturação & Defesa de PSKUs</h4>
-                        <p>Com a visibilidade correta das classificações dos clusters, já estamos executando o remapeamento preciso das nossas <strong>Top Contas</strong>. Isso nos permite adequar a oferta estratégica de produtos (PSKUs) que são verdadeiramente ideais para o perfil real de cada loja.</p>
+                        <h4>Reestruturação de Métricas GTM</h4>
+                        <p>Com a visibilidade correta das classificações dos clusters, já estamos executando o remapeamento preciso das nossas métricas de GTM, como as <strong>Top Contas e PSKUs</strong>. Isso nos permite adequar a oferta estratégica de produtos que são verdadeiramente ideais para o perfil real de cada loja.</p>
                     </div>
                     <div class="impact-card-hero">
                         <i class="fa-solid fa-arrow-trend-up"></i>
                         <h4>Alocação Assertiva e Market Share</h4>
-                        <p>Garantir o tamanho real do cliente significa destravar a alocação de recursos e verbas de Trade onde elas geram mais retorno financeiro. Essa assertividade na ponta acelera o giro, qualifica o mix e traciona o Sell-Out, garantindo a meta central: <span class="impact-highlight-text">Crescer acima do mercado.</span></p>
+                        <p>Garantir o tamanho real do varejo significa destravar a <strong>alocação de recursos e verbas de Trade</strong> onde elas geram mais retorno financeiro. Essa assertividade na ponta <strong>acelera o giro, qualifica o mix e traciona o Sell-Out</strong>, garantindo a meta central: <span class="impact-highlight-text">Crescer acima do mercado.</span></p>
                     </div>
                 </div>
             </div>
@@ -441,7 +437,7 @@
             <div class="grid-3 fade-in">
                 <div class="card" style="border-top: 4px solid var(--success); padding: 25px;">
                     <h3 style="font-size: 15px;"><i class="fa-solid fa-shield-check" style="color: var(--success);"></i> Integridade da Base</h3>
-                    <p style="font-size: 13px;">Recuperamos o controle analítico e a rastreabilidade da operação. Milhares de CNPJs críticos já foram retificados.</p>
+                    <p style="font-size: 13px;">Recuperamos o controle analítico e a rastreabilidade da operação. Dezenas de CNPJs críticos já foram retificados e estão sistemicamente blindados.</p>
                 </div>
                 <div class="card" style="border-top: 4px solid var(--success); padding: 25px;">
                     <h3 style="font-size: 15px;"><i class="fa-solid fa-stopwatch" style="color: var(--success);"></i> Eficiência Comercial</h3>
@@ -449,7 +445,7 @@
                 </div>
                 <div class="card" style="border-top: 4px solid var(--warning); padding: 25px;">
                     <h3 style="font-size: 15px;"><i class="fa-solid fa-crosshairs" style="color: var(--warning);"></i> Cerco aos Ofensores</h3>
-                    <p style="font-size: 13px;">Graças à governança implementada, estamos isolando e tratando assertivamente as irregularidades dos últimos 2 clientes ofensores remanescentes.</p>
+                    <p style="font-size: 13px;">Graças à governança implementada, estamos isolando e tratando assertivamente as irregularidades dos últimos clientes ofensores remanescentes.</p>
                 </div>
             </div>
             
