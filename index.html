@@ -40,7 +40,7 @@
         
         /* Indicador de Clique (Seta Animada) */
         @keyframes bounceDown { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -5px); } }
-        .click-hint { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); color: var(--loreal-red); font-size: 11px; font-weight: bold; animation: bounceDown 1.5s infinite; white-space: nowrap; pointer-events: none; }
+        .click-hint { position: absolute; top: -32px; left: 50%; transform: translateX(-50%); color: var(--loreal-red); font-size: 12px; font-weight: bold; animation: bounceDown 1.5s infinite; white-space: nowrap; pointer-events: none; background: #fff1f2; padding: 2px 10px; border-radius: 12px; border: 1px solid #fecdd3; }
         
         /* Sidebar Navigation */
         .sidebar { width: var(--sidebar-width); background: var(--accent-black); color: white; height: 100vh; position: fixed; display: flex; flex-direction: column; padding: 30px 20px; z-index: 100; box-shadow: 4px 0 15px rgba(0,0,0,0.1); }
@@ -99,7 +99,7 @@
         .u-kpi .val { font-size: 24px; font-weight: bold; color: var(--accent-black); }
         .u-kpi .sub { font-size: 11px; font-weight: bold; margin-top: 5px; }
         
-        /* Botão Modal Tipos Erro */
+        /* Botões */
         .btn-action { background: white; border: 1px solid #cbd5e1; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text-dark); transition: 0.2s; }
         .btn-action:hover { background: #f1f5f9; }
         .btn-highlight { border: 1px solid var(--loreal-red); color: var(--loreal-red); background: #fef2f2; }
@@ -163,22 +163,22 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>O que está em jogo?</h1>
-                <p>Antes de entender o problema, é preciso entender a métrica. Nossa malha de distribuição conta com distribuidores e atacados, que compram os produtos da L'Oréal e vendem para o varejo. Recebemos a informação das lojas que estão comprando: qual é o ambiente de varejo (Cluster 3 - farmácia, alimentar, perfumaria, etc.) e o tamanho dele com base no check-out (Cluster 2). É com base nessas classificações de <strong>Cluster</strong> que baseamos todos os nossos esforços, investimentos e estratégias de Go To Market.</p>
+                <p>Antes de entender o problema, é preciso entender a métrica. Nossa malha de distribuição opera por meio de distribuidores e atacados que conectam a L'Oréal ao varejo. Para garantir que nossos produtos cheguem às prateleiras certas, recebemos duas informações vitais sobre cada loja compradora: o <strong>ambiente do varejo</strong> (Cluster 3 - ex: farmácias, alimentar) e o <strong>tamanho dessa loja</strong> com base no check-out (Cluster 2). É essa matriz de classificação (Cluster) que dita toda a nossa estratégia de negócios, esforços operacionais e investimentos de <strong>Go To Market</strong>.</p>
             </div>
             <div class="cluster-flow fade-in">
                 <div class="c-box">
                     <h4><i class="fa-solid fa-1"></i> Cluster 1</h4>
-                    <p>Classificação inicial enviada pelo cliente via sistema integrador.</p>
+                    <p>Classificação primária e inicial enviada pelo cliente via sistema integrador.</p>
                 </div>
                 <i class="fa-solid fa-arrow-right c-arrow"></i>
                 <div class="c-box c-danger">
                     <h4><i class="fa-solid fa-2"></i> Cluster 2</h4>
-                    <p>Classificação do <strong>tamanho</strong> do varejo. É o nosso ofensor mais crítico atual, concentrando o maior volume de mudanças.</p>
+                    <p>Classifica o <strong>tamanho</strong> do varejo. É o nosso ofensor mais crítico atual, concentrando o maior volume de inconsistências.</p>
                 </div>
                 <i class="fa-solid fa-arrow-right c-arrow"></i>
                 <div class="c-box">
                     <h4><i class="fa-solid fa-3"></i> Cluster 3</h4>
-                    <p>Ambiente do varejo (Farmácia, Alimentar, etc). Erros aqui, assim como no Cluster 2, distorcem completamente o investimento.</p>
+                    <p>Ambiente de atuação da loja. Erros aqui, assim como no Cluster 2, distorcem completamente o aporte de verbas.</p>
                 </div>
             </div>
         </section>
@@ -188,20 +188,20 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>1. O Desafio e o Efeito Cascata</h1>
-                <p>Identificamos um alto volume de clientes informando segmentações incorretas — seja por falha de ERP, busca por mais verba ou conflitos sistêmicos. A falta de rastreabilidade gerava um efeito cascata que ia da ponta comercial até a nossa reputação global.</p>
+                <p>Identificamos um alto volume de clientes informando segmentações incorretas — seja por falha de ERP, busca intencional por mais verba ou conflitos sistêmicos de integração. A falta de rastreabilidade desse dado gerava um perigoso efeito cascata, afetando da ponta comercial até a nossa reputação global.</p>
             </div>
             <div class="grid-3 fade-in">
                 <div class="card" style="border-top: 4px solid var(--loreal-red);">
                     <h3><i class="fa-solid fa-route"></i> Distribuição e GTM</h3>
-                    <p>Nossa malha de distribuição, pontos de venda e estratégia de mercado (GTM) dependem do cluster. Sem essa precisão, não garantimos que o nosso <strong>dinheiro de investimento</strong> está sendo bem gasto na ponta.</p>
+                    <p>Nossa malha logística, roteiros de venda e estratégia de mercado dependem ativamente do cluster. Sem essa precisão, não temos garantias de que o nosso <strong>investimento financeiro</strong> está sendo empregado com eficiência na ponta.</p>
                 </div>
                 <div class="card" style="border-top: 4px solid var(--accent-black);">
                     <h3><i class="fa-solid fa-chart-pie"></i> Análise de Indicadores</h3>
-                    <p>Um cluster errado prejudica o mapeamento das <strong>Top Contas</strong> e a definição correta dos <strong>PSKUs</strong> de destaque, inviabilizando análises precisas de sell-out e gerando ineficiência para as equipes.</p>
+                    <p>Um cluster mascarado inviabiliza o mapeamento estratégico das nossas <strong>Top Contas</strong> e distorce a definição da cesta ideal de <strong>PSKUs</strong>, prejudicando diretamente a precisão das análises de Sell-Out da companhia.</p>
                 </div>
                 <div class="card" style="border-top: 4px solid var(--gold);">
                     <h3><i class="fa-solid fa-earth-americas"></i> Migração GCP & LATAM</h3>
-                    <p>A LATAM passará a monitorar a qualidade dos dados do Brasil na migração para o GCP. O Brasil precisa ser <strong>referência</strong> em governança, não podemos perder credibilidade global por dados inconsistentes.</p>
+                    <p>Com a virada para o GCP, a LATAM passará a monitorar de perto a saúde dos dados operacionais. O Brasil deve se posicionar como <strong>referência</strong> em governança; não podemos ceder credibilidade global por anomalias sistêmicas.</p>
                 </div>
             </div>
         </section>
@@ -211,35 +211,35 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>2. Meu Papel</h1>
-                <p>Assumi o desafio de transformar um código legado e pouco funcional em um produto de inteligência estratégica e governança interdepartamental. Para isso, cooperei com 6 áreas diferentes a fim de que as reais necessidades de quem será impactado pelo projeto fossem atendidas.</p>
+                <p>Assumi o desafio de resgatar um código legado e transformá-lo em um produto escalável de inteligência estratégica. Para assegurar a adesão e o sucesso da ferramenta, <strong>atuei de forma transversal, colaborando diretamente com 6 áreas diferentes</strong> da companhia para mapear e atender às reais necessidades de todas as frentes impactadas.</p>
             </div>
             <div class="timeline fade-in">
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fa-solid fa-code"></i></div>
                     <div class="timeline-content">
-                        <h4>1. Diagnóstico do Legado</h4>
-                        <p>Resgatei um código criado há 1 ano. Ao executá-lo, iniciei dias de investigação e descobri <strong>uma média de 1.000 alterações de cluster por dia</strong>, mascaradas no banco de dados.</p>
+                        <h4>1. Diagnóstico e Triagem</h4>
+                        <p>Analisei o algoritmo original criado há 1 ano. Ao rodá-lo e cruzar os históricos, identifiquei um problema silencioso e alarmante: <strong>uma média de 1.000 alterações de cluster por dia</strong> ocultas na base de dados.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                     <div class="timeline-content">
                         <h4>2. Mapeamento de Causas Raiz</h4>
-                        <p>Fui a fundo no comportamento dos CNPJs e mapeei as 4 grandes anomalias sistêmicas: Divergência por Org. de Vendas, Looping do "Unknown", Duplicatas e Desvios Isolados.</p>
+                        <p>Investiguei o comportamento unitário dos CNPJs e classifiquei as 4 principais anomalias do sistema: Divergência por Organização de Vendas, Looping de Distribuidor "Unknown", Duplicidade de Lojas e Desvios Isolados.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fa-solid fa-comments"></i></div>
                     <div class="timeline-content">
-                        <h4>3. Alinhamento Stakeholders</h4>
-                        <p>Saí do bastidor analítico e fui para o front: alinhei os impactos com Executivos de Contas, Gerentes Sênior e conduzi reuniões técnicas de acareação direto com os clientes ofensores.</p>
+                        <h4>3. Alinhamento Multidisciplinar</h4>
+                        <p>Traduzi os achados técnicos em impacto de negócio. Apresentei o cenário para as 6 áreas envolvidas, engajando Executivos de Contas, Gerências e até conduzindo reuniões de acareação sistêmica direto com os clientes ofensores.</p>
                     </div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fa-solid fa-rocket"></i></div>
                     <div class="timeline-content">
-                        <h4>4. Produto Final: Inteligência e Alerta</h4>
-                        <p>Melhorei o código adicionando parâmetros de causa e construí um sistema que não apenas plota gráficos, mas <strong>fornece análises, insights e dispara automações internas de alertas</strong> para o time de campo agir.</p>
+                        <h4>4. Desenvolvimento do Produto Final</h4>
+                        <p>Aprimorei a inteligência do código adicionando regras de negócio e construí um sistema completo que <strong>fornece análises visuais, identifica o WOB em risco e dispara automações de alertas vitais</strong> para subsidiar o time de campo.</p>
                     </div>
                 </div>
             </div>
@@ -250,7 +250,7 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>3. A Solução: Visão do Produto na Prática</h1>
-                <p>Uma plataforma interativa que permite análise de causa, expõe o peso do negócio (WOB) impactado e direciona a correção cirúrgica dos ofensores da nossa base de dados.</p>
+                <p>Mais do que um dashboard estático, a interface atua como um radar ativo. Ela isola o ruído, expõe o peso financeiro (WOB) comprometido e viabiliza uma ação cirúrgica e imediata junto aos ofensores da base.</p>
             </div>
             <div class="ui-mockup fade-in" style="position: relative;">
                 <div class="ui-header">
@@ -259,52 +259,52 @@
                         
                         <!-- Botão com indicador animado -->
                         <div style="position: relative;">
-                            <div class="click-hint"><i class="fa-solid fa-arrow-down"></i> Clique Aqui!</div>
+                            <div class="click-hint"><i class="fa-solid fa-arrow-down"></i> Simule um clique</div>
                             <button class="btn-action btn-highlight" onclick="toggleModal()"><i class="fa-solid fa-layer-group"></i> Tipos de Erro Mapeados</button>
                         </div>
 
-                        <button class="btn-action btn-primary"><i class="fa-solid fa-download"></i> Baixar Base (CSV)</button>
+                        <button class="btn-action btn-primary"><i class="fa-solid fa-download"></i> Exportar Dados (CSV)</button>
                     </div>
                 </div>
                 
                 <div class="ui-kpi-bar">
-                    <div class="u-kpi"><h5>Saúde da Base (Atual)</h5><span class="val" style="color: var(--success);">96.8%</span><div class="sub" style="color: var(--text-muted);">Alvo absoluto: 100%</div></div>
-                    <div class="u-kpi"><h5>Total CNPJs Analisados</h5><span class="val">24.590</span><div class="sub" style="color: var(--text-muted);">Base Brasil Ativa</div></div>
-                    <div class="u-kpi" style="border-left: 3px solid var(--danger);"><h5>CNPJs com Erro Sistêmico</h5><span class="val" style="color: var(--danger);">317</span><div class="sub" style="color: var(--danger);">Oscilações em D-1</div></div>
+                    <div class="u-kpi"><h5>Saúde da Base (Atual)</h5><span class="val" style="color: var(--success);">96.8%</span><div class="sub" style="color: var(--text-muted);">Alvo absoluto de governança: 100%</div></div>
+                    <div class="u-kpi"><h5>Volume de CNPJs Lidos</h5><span class="val">24.590</span><div class="sub" style="color: var(--text-muted);">Base Nacional Ativa</div></div>
+                    <div class="u-kpi" style="border-left: 3px solid var(--danger);"><h5>CNPJs com Erro Sistêmico</h5><span class="val" style="color: var(--danger);">317</span><div class="sub" style="color: var(--danger);">Oscilações detectadas (D-1)</div></div>
                     <div class="u-kpi" style="background: var(--accent-black); color: white;">
-                        <h5 style="color: #94a3b8;">WOB em Risco (Sell-Out)</h5><span class="val" style="color: white;">14.2%</span><div class="sub" style="color: var(--gold);"><i class="fa-solid fa-triangle-exclamation"></i> Alto Impacto no Negócio</div>
+                        <h5 style="color: #94a3b8;">WOB em Risco (Sell-Out)</h5><span class="val" style="color: white;">14.2%</span><div class="sub" style="color: var(--gold);"><i class="fa-solid fa-triangle-exclamation"></i> Alto Impacto Financeiro</div>
                     </div>
                 </div>
                 <div class="ui-table-section">
                     <div class="ui-table-header">
-                        <h3 style="font-size: 16px; color: var(--accent-black);">Detalhamento de Clientes com Alteração</h3>
-                        <span style="font-size: 12px; color: var(--text-muted);">Visão de Ofensores Principais</span>
+                        <h3 style="font-size: 16px; color: var(--accent-black);">Detalhamento Executivo de Anomalias</h3>
+                        <span style="font-size: 12px; color: var(--text-muted);">Monitoramento dos Principais Ofensores</span>
                     </div>
                     <table class="ui-table">
                         <thead>
-                            <tr><th>Cliente (Distribuidor)</th><th>CNPJs com Erro</th><th>% Saúde Cliente</th><th>WOB (Peso Negócio)</th><th>Causa Sistêmica</th><th>Nível Alerta</th></tr>
+                            <tr><th>Cliente (Distribuidor)</th><th>CNPJs Divergentes</th><th>Saúde Local (%)</th><th>WOB Afetado</th><th>Diagnóstico Sistêmico</th><th>Status Operacional</th></tr>
                         </thead>
                         <tbody>
                             <tr style="background: #fff1f2;">
                                 <td><strong>CLIENTE A</strong></td><td><strong>263</strong></td>
                                 <td><span style="color: var(--danger);">7.5%</span></td>
                                 <td><strong>12.4%</strong></td>
-                                <td>Distribuidor da Área "Unknown"</td>
+                                <td>Distribuidor da Área convertido para "Unknown"</td>
                                 <td><span class="badge b-high">CRÍTICO</span></td>
                             </tr>
                             <tr>
                                 <td><strong>CLIENTE B</strong></td><td>48</td>
                                 <td>98.9%</td>
                                 <td>1.8%</td>
-                                <td>Organização de Vendas</td>
+                                <td>Conflito de Organização de Vendas</td>
                                 <td><span class="badge b-high">CRÍTICO</span></td>
                             </tr>
                             <tr>
                                 <td>CLIENTE C</td><td>6</td>
                                 <td>99.6%</td>
                                 <td>0.4%</td>
-                                <td>Caso Isolado (Reversão)</td>
-                                <td><span class="badge b-med">MÉDIO</span></td>
+                                <td>Caso Isolado (Reversão Manual)</td>
+                                <td><span class="badge b-med">ATENÇÃO</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -313,14 +313,14 @@
                 <!-- Simulação de Modal (Tipos de Erro) -->
                 <div class="sim-modal" id="errorModal">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
-                        <h3 style="font-size: 14px; color: var(--accent-black);">Dicionário de Causas Mapeadas</h3>
+                        <h3 style="font-size: 14px; color: var(--accent-black);">Dicionário de Diagnósticos</h3>
                         <i class="fa-solid fa-xmark" style="cursor: pointer; color: var(--text-muted);" onclick="toggleModal()"></i>
                     </div>
                     <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Status Alterado:</strong> Divergência na Organização de Vendas (Ex: Cliente A).</li>
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Removido:</strong> Distribuidor da área virando "Unknown" por loop no C1/C3 (Ex: Cliente B).</li>
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Nova Combinação:</strong> Duplicatas devido à subida por nome de loja via integrador.</li>
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Caso Isolado:</strong> Alterações manuais e reversões para 0000 (Ex: Cliente C).</li>
+                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Status Alterado:</strong> Divergência aguda na estrutura da Organização de Vendas (Ex: Cliente A).</li>
+                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Distribuidor Removido:</strong> Falha de looping no C1/C3 forçando o status para "Unknown" (Ex: Cliente B).</li>
+                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Nova Combinação:</strong> Conflito gerando duplicidade pelo cadastro via integrador.</li>
+                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Desvio Isolado:</strong> Alterações atípicas e reversões imprevistas para 0000 (Ex: Cliente C).</li>
                     </ul>
                 </div>
             </div>
@@ -330,36 +330,36 @@
         <section id="resultados">
             <div class="section-header fade-in">
                 <div class="title-line"></div>
-                <h1>4. Resultados & Visão de Futuro</h1>
-                <p>O saneamento de dados não é o fim, é o habilitador. Com a base limpa, liberamos o caminho para maximizar a conversão de sell-out através de investimentos assertivos.</p>
+                <h1>4. Impactos que Já Estão Acontecendo</h1>
+                <p>Nesta iniciativa, o saneamento dos dados não é a linha de chegada, é apenas o alicerce. Ao restabelecermos a verdade na nossa base, destravamos alavancas reais de conversão e maximização do Retorno sobre Investimento (ROI) de Trade.</p>
             </div>
             
             <div class="grid-3 fade-in" style="margin-bottom: 30px;">
                 <div class="card" style="border-top: 4px solid var(--success);">
-                    <h3><i class="fa-solid fa-heart-pulse" style="color: var(--success);"></i> Saúde da Base</h3>
-                    <p>Elevamos a rastreabilidade e a qualidade de dados. Diversos CNPJs já foram corrigidos e blindados nas fontes geradoras.</p>
+                    <h3><i class="fa-solid fa-shield-check" style="color: var(--success);"></i> Integridade da Base</h3>
+                    <p>Recuperamos o controle analítico e a rastreabilidade da operação. Dezenas de CNPJs críticos já foram retificados e estão sistemicamente blindados nas fontes geradoras.</p>
                 </div>
                 <div class="card" style="border-top: 4px solid var(--success);">
-                    <h3><i class="fa-solid fa-stopwatch" style="color: var(--success);"></i> Eficiência e Foco</h3>
-                    <p>A automação interna dos alertas eliminou horas de trabalho manual/braçal na identificação, permitindo ao time focar na estratégia e ação.</p>
+                    <h3><i class="fa-solid fa-stopwatch" style="color: var(--success);"></i> Eficiência Comercial</h3>
+                    <p>A automação do fluxo de monitoramento e alertas internos mitigou dezenas de horas de trabalho braçal. O time comercial deixou de garimpar erros para focar na execução da estratégia.</p>
                 </div>
                 <div class="card" style="border-top: 4px solid var(--warning);">
-                    <h3><i class="fa-solid fa-shield" style="color: var(--warning);"></i> Ações em Andamento</h3>
-                    <p>Cerco final e blindagem sistêmica dos 2 clientes ofensores restantes, garantidos pela agilidade da nossa nova governança diária.</p>
+                    <h3><i class="fa-solid fa-crosshairs" style="color: var(--warning);"></i> Cerco aos Ofensores</h3>
+                    <p>Graças à governança implementada, estamos isolando e tratando assertivamente as irregularidades dos últimos 2 clientes ofensores remanescentes na base Brasil.</p>
                 </div>
             </div>
             
-            <!-- NOVA SESSÃO: IMPACTOS -->
+            <!-- NOVA SESSÃO: IMPACTOS DIRETOS EM GTM -->
             <div class="card fade-in" style="background: var(--accent-black); color: white; border: none;">
-                <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;"><i class="fa-solid fa-map"></i> Impactos Que Já Estão Acontecendo</h3>
+                <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;"><i class="fa-solid fa-rocket"></i> Aceleração Direta no Go To Market</h3>
                 <div style="display: flex; gap: 40px; margin-top: 20px;">
                     <div style="flex: 1;">
-                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Reestruturação & PSKUs</h4>
-                        <p style="color: #94a3b8; font-size: 13px;">Com o envio das classificações corretas, já estamos reestruturando o mapeamento de <strong>Top Contas</strong> e redefinindo com precisão a nossa cesta de produtos (PSKUs).</p>
+                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Reestruturação & Defesa de PSKUs</h4>
+                        <p style="color: #94a3b8; font-size: 13px;">Com a visibilidade correta das classificações, já estamos executando o remapeamento preciso das nossas <strong>Top Contas</strong> e adequando a oferta estratégica de produtos (PSKUs) ideais para o perfil real de cada loja.</p>
                     </div>
                     <div style="flex: 1;">
-                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Alocação Assertiva e Crescimento</h4>
-                        <p style="color: #94a3b8; font-size: 13px;">Com o potencial correto de cada loja, garantimos a alocação assertiva de verbas e investimentos de trade. Isso impulsiona o aumento de giro, otimiza o sell-out e melhora o mix, garantindo que <strong>vamos crescer mais que o mercado!</strong></p>
+                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Alocação Assertiva e Market Share</h4>
+                        <p style="color: #94a3b8; font-size: 13px;">Garantir o tamanho real do cliente (Cluster 2) significa destravar a alocação de recursos e verbas de Trade onde elas geram mais retorno. Essa assertividade acelera o giro, qualifica o mix e traciona o Sell-Out, garantindo o nosso objetivo final: <strong>crescer acima do mercado.</strong></p>
                     </div>
                 </div>
             </div>
@@ -405,7 +405,7 @@
         const toastObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Somente toca o som se o toast não estiver aparecendo (para não apitar em micro-rolagens)
+                    // Somente toca o som se o toast não estiver aparecendo (evita bipe em micro-rolagens)
                     if(!toast.classList.contains('show')){
                         try {
                             const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -430,16 +430,16 @@
                     toast.classList.remove('show');
                 }
             });
-        }, { threshold: 0.25 }); // Threshold ajustado para disparar na visualização correta
+        }, { threshold: 0.25 }); 
         
         toastObserver.observe(solutionSection);
         
-        // Função do Modal Fake
+        // Função do Modal Fake & Sumiço da Setinha
         function toggleModal() {
             const modal = document.getElementById('errorModal');
             modal.classList.toggle('active');
             
-            // Ocultar a setinha de "Clique Aqui!" depois que a pessoa clicar pela primeira vez
+            // Ocultar a setinha de "Simule um clique" depois que a pessoa clicar pela primeira vez
             const clickHint = document.querySelector('.click-hint');
             if (clickHint) clickHint.style.display = 'none';
         }
