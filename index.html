@@ -18,16 +18,15 @@
             --gold: #facc15;
             --loreal-red: #dc2626;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Roboto, Helvetica, sans-serif; }
         body { background-color: var(--bg-main); color: var(--text-dark); display: flex; scroll-behavior: smooth; overflow-x: hidden; }
-
+        
         /* Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #f1f1f1; }
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
-
-        /* Notificação Flutuante (O "Susto" Interativo) */
+        
+        /* Notificação Flutuante (O "Susto" Interativo Contínuo) */
         .live-toast {
             position: fixed; top: 30px; right: -400px; width: 350px; background: white; border-left: 5px solid var(--danger);
             box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); border-radius: 8px; padding: 20px; z-index: 9999;
@@ -38,14 +37,17 @@
         .live-toast-content h4 { margin: 0 0 5px 0; font-size: 15px; color: var(--accent-black); }
         .live-toast-content p { margin: 0; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
-
+        
+        /* Indicador de Clique (Seta Animada) */
+        @keyframes bounceDown { 0%, 100% { transform: translate(-50%, 0); } 50% { transform: translate(-50%, -5px); } }
+        .click-hint { position: absolute; top: -28px; left: 50%; transform: translateX(-50%); color: var(--loreal-red); font-size: 11px; font-weight: bold; animation: bounceDown 1.5s infinite; white-space: nowrap; pointer-events: none; }
+        
         /* Sidebar Navigation */
         .sidebar { width: var(--sidebar-width); background: var(--accent-black); color: white; height: 100vh; position: fixed; display: flex; flex-direction: column; padding: 30px 20px; z-index: 100; box-shadow: 4px 0 15px rgba(0,0,0,0.1); }
         .sidebar-header { margin-bottom: 40px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 20px; }
         .sidebar-header i { font-size: 32px; margin-bottom: 10px; color: var(--gold); }
         .sidebar-header h2 { font-size: 14px; text-transform: uppercase; letter-spacing: 2px; }
         .sidebar-header p { font-size: 11px; color: #94a3b8; margin-top: 5px; }
-
         .nav-menu { list-style: none; display: flex; flex-direction: column; gap: 10px; }
         .nav-item { text-decoration: none; color: #94a3b8; padding: 15px 20px; border-radius: 8px; font-weight: bold; font-size: 13px; display: flex; align-items: center; gap: 15px; transition: all 0.3s ease; border-left: 4px solid transparent; text-transform: uppercase; letter-spacing: 1px; }
         .nav-item:hover, .nav-item.active { background: rgba(255,255,255,0.05); color: white; border-left: 4px solid var(--gold); }
@@ -59,7 +61,7 @@
         .section-header h1 { font-size: 36px; color: var(--accent-black); margin-bottom: 15px; letter-spacing: -0.5px; }
         .section-header p { font-size: 16px; color: var(--text-muted); line-height: 1.6; max-width: 900px; }
         .title-line { height: 4px; width: 60px; background: var(--loreal-red); margin-bottom: 20px; border-radius: 2px; }
-
+        
         /* Grids & Cards */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
         .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
@@ -68,7 +70,7 @@
         .card:hover { transform: translateY(-5px); }
         .card h3 { font-size: 18px; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--accent-black); }
         .card p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
-
+        
         /* Infográfico do Cluster */
         .cluster-flow { display: flex; align-items: center; justify-content: space-between; background: white; padding: 30px; border-radius: 12px; border: 1px dashed #cbd5e1; margin-bottom: 40px; }
         .c-box { flex: 1; text-align: center; padding: 20px; }
@@ -77,7 +79,7 @@
         .c-arrow { color: #cbd5e1; font-size: 24px; }
         .c-danger { border: 2px solid var(--danger); border-radius: 8px; background: #fef2f2; position: relative; }
         .c-danger::after { content: '🚨 MAIOR VOLUME DE ERROS'; position: absolute; top: -12px; left: 50%; transform: translateX(-50%); background: var(--danger); color: white; font-size: 10px; padding: 4px 8px; border-radius: 12px; font-weight: bold; width: 140px; }
-
+        
         /* Timeline (Meu Papel) */
         .timeline { display: flex; flex-direction: column; gap: 20px; position: relative; margin-top: 20px; }
         .timeline::before { content: ''; position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: #e2e8f0; }
@@ -86,7 +88,7 @@
         .timeline-content { background: white; padding: 25px; border-radius: 12px; border: 1px solid #e2e8f0; flex: 1; box-shadow: 0 4px 6px rgba(0,0,0,0.02); }
         .timeline-content h4 { font-size: 16px; margin-bottom: 8px; color: var(--accent-black); }
         .timeline-content p { font-size: 14px; color: var(--text-muted); line-height: 1.5; }
-
+        
         /* UI Mockup Expandido */
         .ui-mockup { border: 1px solid #cbd5e1; border-radius: 12px; overflow: hidden; background: white; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); display: flex; flex-direction: column; }
         .ui-header { background: var(--accent-black); color: white; padding: 15px 25px; display: flex; justify-content: space-between; align-items: center; }
@@ -100,9 +102,11 @@
         /* Botão Modal Tipos Erro */
         .btn-action { background: white; border: 1px solid #cbd5e1; padding: 8px 15px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer; display: flex; align-items: center; gap: 8px; color: var(--text-dark); transition: 0.2s; }
         .btn-action:hover { background: #f1f5f9; }
+        .btn-highlight { border: 1px solid var(--loreal-red); color: var(--loreal-red); background: #fef2f2; }
+        .btn-highlight:hover { background: #fee2e2; }
         .btn-primary { background: var(--accent-black); color: white; border: none; }
         .btn-primary:hover { background: #334155; }
-
+        
         .ui-table-section { padding: 20px; }
         .ui-table-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .ui-table { width: 100%; border-collapse: collapse; font-size: 13px; }
@@ -117,14 +121,13 @@
         .sim-modal { display: none; position: absolute; top: 150px; left: 50%; transform: translateX(-50%); width: 400px; background: white; border-radius: 12px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.3); border: 1px solid #cbd5e1; z-index: 50; padding: 20px; }
         .sim-modal.active { display: block; animation: fadeUp 0.3s ease-out; }
         @keyframes fadeUp { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } }
-
+        
         /* Animation Classes */
         .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
-
     <!-- NOTIFICAÇÃO FAKE (Alerta do Sistema) -->
     <div class="live-toast" id="liveToast">
         <i class="fa-solid fa-triangle-exclamation"></i>
@@ -160,9 +163,8 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>O que está em jogo?</h1>
-                <p>Antes de entender o problema, é preciso entender a métrica. O <strong>Cluster</strong> é a segmentação vital dos nossos clientes. Ele dita toda a nossa preparação de negócio e estratégia financeira para cada ambiente de varejo.</p>
+                <p>Antes de entender o problema, é preciso entender a métrica. Nossa malha de distribuição conta com distribuidores e atacados, que compram os produtos da L'Oréal e vendem para o varejo. Recebemos a informação das lojas que estão comprando: qual é o ambiente de varejo (Cluster 3 - farmácia, alimentar, perfumaria, etc.) e o tamanho dele com base no check-out (Cluster 2). É com base nessas classificações de <strong>Cluster</strong> que baseamos todos os nossos esforços, investimentos e estratégias de Go To Market.</p>
             </div>
-
             <div class="cluster-flow fade-in">
                 <div class="c-box">
                     <h4><i class="fa-solid fa-1"></i> Cluster 1</h4>
@@ -188,7 +190,6 @@
                 <h1>1. O Desafio e o Efeito Cascata</h1>
                 <p>Identificamos um alto volume de clientes informando segmentações incorretas — seja por falha de ERP, busca por mais verba ou conflitos sistêmicos. A falta de rastreabilidade gerava um efeito cascata que ia da ponta comercial até a nossa reputação global.</p>
             </div>
-
             <div class="grid-3 fade-in">
                 <div class="card" style="border-top: 4px solid var(--loreal-red);">
                     <h3><i class="fa-solid fa-route"></i> Distribuição e GTM</h3>
@@ -210,9 +211,8 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>2. Meu Papel</h1>
-                <p>Assumi o desafio de transformar um código legado e pouco funcional em um produto de inteligência estratégica e governança interdepartamental.</p>
+                <p>Assumi o desafio de transformar um código legado e pouco funcional em um produto de inteligência estratégica e governança interdepartamental. Para isso, cooperei com 6 áreas diferentes a fim de que as reais necessidades de quem será impactado pelo projeto fossem atendidas.</p>
             </div>
-
             <div class="timeline fade-in">
                 <div class="timeline-item">
                     <div class="timeline-icon"><i class="fa-solid fa-code"></i></div>
@@ -252,12 +252,17 @@
                 <h1>3. A Solução: Visão do Produto na Prática</h1>
                 <p>Uma plataforma interativa que permite análise de causa, expõe o peso do negócio (WOB) impactado e direciona a correção cirúrgica dos ofensores da nossa base de dados.</p>
             </div>
-
             <div class="ui-mockup fade-in" style="position: relative;">
                 <div class="ui-header">
                     <span><i class="fa-solid fa-shield-halved" style="margin-right: 8px;"></i> Painel de Governança de Clusters</span>
                     <div style="display: flex; gap: 10px;">
-                        <button class="btn-action" onclick="toggleModal()"><i class="fa-solid fa-layer-group"></i> Tipos de Erro Mapeados</button>
+                        
+                        <!-- Botão com indicador animado -->
+                        <div style="position: relative;">
+                            <div class="click-hint"><i class="fa-solid fa-arrow-down"></i> Clique Aqui!</div>
+                            <button class="btn-action btn-highlight" onclick="toggleModal()"><i class="fa-solid fa-layer-group"></i> Tipos de Erro Mapeados</button>
+                        </div>
+
                         <button class="btn-action btn-primary"><i class="fa-solid fa-download"></i> Baixar Base (CSV)</button>
                     </div>
                 </div>
@@ -270,7 +275,6 @@
                         <h5 style="color: #94a3b8;">WOB em Risco (Sell-Out)</h5><span class="val" style="color: white;">14.2%</span><div class="sub" style="color: var(--gold);"><i class="fa-solid fa-triangle-exclamation"></i> Alto Impacto no Negócio</div>
                     </div>
                 </div>
-
                 <div class="ui-table-section">
                     <div class="ui-table-header">
                         <h3 style="font-size: 16px; color: var(--accent-black);">Detalhamento de Clientes com Alteração</h3>
@@ -305,7 +309,7 @@
                         </tbody>
                     </table>
                 </div>
-
+                
                 <!-- Simulação de Modal (Tipos de Erro) -->
                 <div class="sim-modal" id="errorModal">
                     <div style="display: flex; justify-content: space-between; margin-bottom: 15px;">
@@ -329,7 +333,7 @@
                 <h1>4. Resultados & Visão de Futuro</h1>
                 <p>O saneamento de dados não é o fim, é o habilitador. Com a base limpa, liberamos o caminho para maximizar a conversão de sell-out através de investimentos assertivos.</p>
             </div>
-
+            
             <div class="grid-3 fade-in" style="margin-bottom: 30px;">
                 <div class="card" style="border-top: 4px solid var(--success);">
                     <h3><i class="fa-solid fa-heart-pulse" style="color: var(--success);"></i> Saúde da Base</h3>
@@ -344,17 +348,18 @@
                     <p>Cerco final e blindagem sistêmica dos 2 clientes ofensores restantes, garantidos pela agilidade da nossa nova governança diária.</p>
                 </div>
             </div>
-
+            
+            <!-- NOVA SESSÃO: IMPACTOS -->
             <div class="card fade-in" style="background: var(--accent-black); color: white; border: none;">
-                <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;"><i class="fa-solid fa-map"></i> Próximos Passos</h3>
+                <h3 style="color: white; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;"><i class="fa-solid fa-map"></i> Impactos Que Já Estão Acontecendo</h3>
                 <div style="display: flex; gap: 40px; margin-top: 20px;">
                     <div style="flex: 1;">
-                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Curto Prazo (Imediato)</h4>
-                        <p style="color: #94a3b8; font-size: 13px;">Com a base saneada, enviaremos as classificações corretas para reestruturar as <strong>Top Contas</strong> e redefinir com precisão a cesta de produtos (PSKUs).</p>
+                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Reestruturação & PSKUs</h4>
+                        <p style="color: #94a3b8; font-size: 13px;">Com o envio das classificações corretas, já estamos reestruturando o mapeamento de <strong>Top Contas</strong> e redefinindo com precisão a nossa cesta de produtos (PSKUs).</p>
                     </div>
                     <div style="flex: 1;">
-                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Médio e Longo Prazo</h4>
-                        <p style="color: #94a3b8; font-size: 13px;">Garantir a alocação assertiva das Verbas de Trade e das estratégias de GTM, garantindo retorno (Sell-Out) otimizado de cada real investido.</p>
+                        <h4 style="color: var(--gold); margin-bottom: 10px; font-size: 14px;">Alocação Assertiva e Crescimento</h4>
+                        <p style="color: #94a3b8; font-size: 13px;">Com o potencial correto de cada loja, garantimos a alocação assertiva de verbas e investimentos de trade. Isso impulsiona o aumento de giro, otimiza o sell-out e melhora o mix, garantindo que <strong>vamos crescer mais que o mercado!</strong></p>
                     </div>
                 </div>
             </div>
@@ -371,13 +376,11 @@
                 }
             });
         }, { threshold: 0.15 });
-
         document.querySelectorAll('.fade-in').forEach((el) => { observer.observe(el); });
-
+        
         // Destaque dinâmico no Menu Lateral
         const sections = document.querySelectorAll('section');
         const navItems = document.querySelectorAll('.nav-item');
-
         window.addEventListener('scroll', () => {
             let current = '';
             sections.forEach(section => {
@@ -387,7 +390,6 @@
                     current = section.getAttribute('id');
                 }
             });
-
             navItems.forEach(item => {
                 item.classList.remove('active');
                 if (item.getAttribute('href').includes(current)) {
@@ -395,55 +397,51 @@
                 }
             });
         });
-
-        // O TOAST MÁGICO (Dispara SEMPRE que a Seção da Solução entra na tela)
+        
+        // O TOAST MÁGICO CONTÍNUO (Fica na tela enquanto a Seção Solução estiver visível)
         const solutionSection = document.getElementById('solucao');
         const toast = document.getElementById('liveToast');
-        let toastTimeout;
-
+        
         const toastObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    // Limpa o temporizador anterior (evita bugs de sobreposição)
-                    clearTimeout(toastTimeout);
+                    // Somente toca o som se o toast não estiver aparecendo (para não apitar em micro-rolagens)
+                    if(!toast.classList.contains('show')){
+                        try {
+                            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                            const osc = ctx.createOscillator();
+                            const gainNode = ctx.createGain();
+                            osc.connect(gainNode);
+                            gainNode.connect(ctx.destination);
+                            osc.type = 'sine';
+                            osc.frequency.setValueAtTime(880, ctx.currentTime);
+                            osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.1);
+                            gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
+                            gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
+                            osc.start();
+                            osc.stop(ctx.currentTime + 0.5);
+                        } catch(e) {} 
+                    }
                     
-                    // Toca o som (opcional, protegido caso o navegador bloqueie áudio automático)
-                    try {
-                        const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                        const osc = ctx.createOscillator();
-                        const gainNode = ctx.createGain();
-                        osc.connect(gainNode);
-                        gainNode.connect(ctx.destination);
-                        osc.type = 'sine';
-                        osc.frequency.setValueAtTime(880, ctx.currentTime);
-                        osc.frequency.exponentialRampToValueAtTime(1760, ctx.currentTime + 0.1);
-                        gainNode.gain.setValueAtTime(0.1, ctx.currentTime);
-                        gainNode.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.5);
-                        osc.start();
-                        osc.stop(ctx.currentTime + 0.5);
-                    } catch(e) {} 
-
-                    // Mostra o alerta
+                    // Mostra o alerta e mantém ele lá
                     toast.classList.add('show');
-                    
-                    // Esconde exatamente após 5 segundos
-                    toastTimeout = setTimeout(() => {
-                        toast.classList.remove('show');
-                    }, 5000);
                 } else {
-                    // Esconde instantaneamente se o usuário rolar para longe antes dos 5 segundos acabarem
-                    // E prepara o Toast para reaparecer na próxima vez que ele voltar.
+                    // Esconde assim que o usuário sair da seção "Solução"
                     toast.classList.remove('show');
                 }
             });
-        }, { threshold: 0.3 }); // O evento dispara quando 30% da seção "Solução" estiver visível
-
+        }, { threshold: 0.25 }); // Threshold ajustado para disparar na visualização correta
+        
         toastObserver.observe(solutionSection);
-
+        
         // Função do Modal Fake
         function toggleModal() {
             const modal = document.getElementById('errorModal');
             modal.classList.toggle('active');
+            
+            // Ocultar a setinha de "Clique Aqui!" depois que a pessoa clicar pela primeira vez
+            const clickHint = document.querySelector('.click-hint');
+            if (clickHint) clickHint.style.display = 'none';
         }
     </script>
 </body>
