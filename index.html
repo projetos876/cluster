@@ -130,7 +130,7 @@
         <i class="fa-solid fa-triangle-exclamation"></i>
         <div class="live-toast-content">
             <h4>Alerta do Sistema: Detecção Crítica</h4>
-            <p><strong>Loop Unknown</strong> identificado no cliente REAL DEC.<br><strong>Impacto Financeiro (WOB):</strong> 12.4% da divisão.<br><em>Notificação interna gerada com sucesso.</em></p>
+            <p><strong>Loop Unknown</strong> identificado no cliente CLIENTE A.<br><strong>Impacto Financeiro (WOB):</strong> 12.4% da divisão.<br><em>Notificação interna gerada com sucesso.</em></p>
         </div>
     </div>
 
@@ -264,10 +264,10 @@
                 
                 <div class="ui-kpi-bar">
                     <div class="u-kpi"><h5>Saúde da Base (Atual)</h5><span class="val" style="color: var(--success);">96.8%</span><div class="sub" style="color: var(--text-muted);">Alvo absoluto: 100%</div></div>
-                    <div class="u-kpi"><h5>Total CNPJs Atendidos</h5><span class="val">24.590</span><div class="sub" style="color: var(--text-muted);">Base Brasil Ativa</div></div>
+                    <div class="u-kpi"><h5>Total CNPJs Analisados</h5><span class="val">24.590</span><div class="sub" style="color: var(--text-muted);">Base Brasil Ativa</div></div>
                     <div class="u-kpi" style="border-left: 3px solid var(--danger);"><h5>CNPJs com Erro Sistêmico</h5><span class="val" style="color: var(--danger);">317</span><div class="sub" style="color: var(--danger);">Oscilações em D-1</div></div>
                     <div class="u-kpi" style="background: var(--accent-black); color: white;">
-                        <h5 style="color: #94a3b8;">WOB em Risco (Sell-Out)</h5><span class="val" style="color: white;">14.2%</span><div class="sub" style="color: var(--gold);"><i class="fa-solid fa-triangle-exclamation"></i> Volume de Venda Exposto</div>
+                        <h5 style="color: #94a3b8;">WOB em Risco (Sell-Out)</h5><span class="val" style="color: white;">14.2%</span><div class="sub" style="color: var(--gold);"><i class="fa-solid fa-triangle-exclamation"></i> Alto Impacto no Negócio</div>
                     </div>
                 </div>
 
@@ -278,21 +278,21 @@
                     </div>
                     <table class="ui-table">
                         <thead>
-                            <tr><th>Cliente (Distribuidor)</th><th>CNPJs com Erro</th><th>% Saúde Local</th><th>WOB (Peso Negócio)</th><th>Causa Sistêmica / Ação</th><th>Nível Alerta</th></tr>
+                            <tr><th>Cliente (Distribuidor)</th><th>CNPJs com Erro</th><th>% Saúde Cliente</th><th>WOB (Peso Negócio)</th><th>Causa Sistêmica</th><th>Nível Alerta</th></tr>
                         </thead>
                         <tbody>
                             <tr style="background: #fff1f2;">
                                 <td><strong>CLIENTE A</strong></td><td><strong>263</strong></td>
                                 <td><span style="color: var(--danger);">7.5%</span></td>
                                 <td><strong>12.4%</strong></td>
-                                <td>Looping de Unknown</td>
+                                <td>Distribuidor da Área "Unknown"</td>
                                 <td><span class="badge b-high">CRÍTICO</span></td>
                             </tr>
                             <tr>
                                 <td><strong>CLIENTE B</strong></td><td>48</td>
                                 <td>98.9%</td>
                                 <td>1.8%</td>
-                                <td>Org. Vendas (Niely vs DPGP)</td>
+                                <td>Organização de Vendas</td>
                                 <td><span class="badge b-high">CRÍTICO</span></td>
                             </tr>
                             <tr>
@@ -314,7 +314,7 @@
                     </div>
                     <ul style="list-style: none; display: flex; flex-direction: column; gap: 10px; font-size: 12px;">
                         <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Status Alterado:</strong> Divergência na Organização de Vendas (Ex: Cliente A).</li>
-                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Removido:</strong> Distribuidor virando "Unknown" por loop no C1/C3 (Ex: Cliente B).</li>
+                        <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Removido:</strong> Distribuidor da área virando "Unknown" por loop no C1/C3 (Ex: Cliente B).</li>
                         <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Nova Combinação:</strong> Duplicatas devido à subida por nome de loja via integrador.</li>
                         <li style="padding: 10px; background: #f8fafc; border-radius: 6px;"><strong>Caso Isolado:</strong> Alterações manuais e reversões para 0000 (Ex: Cliente C).</li>
                     </ul>
