@@ -33,8 +33,10 @@
             transition: right 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55); display: flex; gap: 15px; align-items: flex-start;
         }
         .live-toast.show { right: 30px; }
-        .live-toast i { color: var(--danger); font-size: 24px; animation: pulse 1.5s infinite; }
-        .live-toast-content h4 { margin: 0 0 5px 0; font-size: 15px; color: var(--accent-black); }
+        .toast-icon { color: var(--danger); font-size: 24px; animation: pulse 1.5s infinite; margin-top: 3px; }
+        .close-toast { position: absolute; top: 12px; right: 12px; font-size: 14px; color: #cbd5e1; cursor: pointer; transition: 0.2s; }
+        .close-toast:hover { color: var(--danger); }
+        .live-toast-content h4 { margin: 0 0 5px 0; font-size: 15px; color: var(--accent-black); padding-right: 15px; }
         .live-toast-content p { margin: 0; font-size: 12px; color: var(--text-muted); line-height: 1.4; }
         @keyframes pulse { 0% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.1); opacity: 0.7; } 100% { transform: scale(1); opacity: 1; } }
         
@@ -128,9 +130,10 @@
     </style>
 </head>
 <body>
-    <!-- NOTIFICAÇÃO FAKE (Alerta do Sistema) -->
+    <!-- NOTIFICAÇÃO FAKE (Alerta do Sistema) com Botão de Fechar -->
     <div class="live-toast" id="liveToast">
-        <i class="fa-solid fa-triangle-exclamation"></i>
+        <i class="fa-solid fa-xmark close-toast" onclick="fecharAlerta()" title="Fechar Alerta"></i>
+        <i class="fa-solid fa-triangle-exclamation toast-icon"></i>
         <div class="live-toast-content">
             <h4>Alerta do Sistema: Detecção Crítica</h4>
             <p><strong>Loop Unknown</strong> identificado no cliente CLIENTE A.<br><strong>Impacto Financeiro (WOB):</strong> 12.4% da divisão.<br><em>Notificação interna gerada com sucesso.</em></p>
@@ -250,7 +253,8 @@
             <div class="section-header fade-in">
                 <div class="title-line"></div>
                 <h1>3. A Solução: Visão do Produto na Prática</h1>
-                <p>Mais do que um dashboard estático, a interface atua como um radar ativo. Ela isola o ruído, expõe o peso financeiro (WOB) comprometido e viabiliza uma ação cirúrgica e imediata junto aos ofensores da base.</p>
+                <!-- O max-width foi reduzido para 600px para garantir que a notificação não cubra o texto -->
+                <p style="max-width: 600px;">Mais do que um dashboard estático, a interface atua como um radar ativo. Ela isola o ruído, expõe o peso financeiro (WOB) comprometido e viabiliza uma ação cirúrgica e imediata junto aos ofensores da base.</p>
             </div>
             <div class="ui-mockup fade-in" style="position: relative;">
                 <div class="ui-header">
@@ -398,14 +402,25 @@
             });
         });
         
-        // O TOAST MÁGICO CONTÍNUO (Fica na tela enquanto a Seção Solução estiver visível)
+        // Controle de Fechamento Manual do Alerta
+        let alertaDispensado = false;
+        
+        function fecharAlerta() {
+            const toast = document.getElementById('liveToast');
+            toast.classList.remove('show');
+            alertaDispensado = true; // Impede que o alerta volte a aparecer após fechado
+        }
+
+        // O TOAST MÁGICO CONTÍNUO
         const solutionSection = document.getElementById('solucao');
         const toast = document.getElementById('liveToast');
         
         const toastObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
+                // Se a pessoa já fechou no X, não faz mais nada
+                if (alertaDispensado) return;
+
                 if (entry.isIntersecting) {
-                    // Somente toca o som se o toast não estiver aparecendo (evita bipe em micro-rolagens)
                     if(!toast.classList.contains('show')){
                         try {
                             const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -423,10 +438,8 @@
                         } catch(e) {} 
                     }
                     
-                    // Mostra o alerta e mantém ele lá
                     toast.classList.add('show');
                 } else {
-                    // Esconde assim que o usuário sair da seção "Solução"
                     toast.classList.remove('show');
                 }
             });
